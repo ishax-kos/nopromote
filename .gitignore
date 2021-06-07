@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/nopromote
+nopromote.so
+nopromote.dylib
+nopromote.dll
+nopromote.a
+nopromote.lib
+nopromote-test-*
+*.exe
+*.o
+*.obj
+*.lst
+test.d
+test.lib
