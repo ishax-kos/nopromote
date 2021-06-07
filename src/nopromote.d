@@ -87,8 +87,8 @@ alias u64 = NoPromote!ulong;
 unittest {
     i8 a = 115;
     int i = 10;
-    writeln("byte ", typeof(a << 5).stringof);
-    writeln("int ",       typeof(a << i).stringof);
+    writeln("byte ", typeof(a + 5).stringof);
+    writeln("int ",  typeof(a + i).stringof);
 }
 
 
