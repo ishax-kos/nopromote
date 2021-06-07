@@ -40,7 +40,6 @@ struct NoPromote(T) {
         /// The next two ensure that the largest type that the operands already share is used.
         /// It prefers the signed/unsignedness of the left hand side.
         else static if(typeof(this).sizeof >= typeof(rhs).sizeof) {
-            pragma(msg, "???");
             return opLLVM!(op)(this, cast(typeof(this)) rhs);
         }
         else static if(typeof(this).sizeof < typeof(rhs).sizeof) {
