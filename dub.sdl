@@ -1,5 +1,5 @@
 name "nopromote"
 description "A library to remove unnecessary upcasting."
-authors "Isaac P. Stepanek Bunsen"
 licence "CC0 1.0 Universal"
+authors "Isaac P. Stepanek Bunsen"
 targetType "library"
