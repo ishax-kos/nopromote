@@ -1,4 +1,4 @@
 name "nopromote"
 description "A library to remove unnecessary upcasting."
-authors "Isaac"
+authors "Isaac P. Stepanek Bunsen"
 targetType "library"
