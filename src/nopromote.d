@@ -5,9 +5,13 @@ import std.traits;
 import std.format;
 
 
+private
 pragma(LDC_inline_ir)
     R inlineIR(string s, R, P...)(P);
 
+
+/// Encapsulate a basic type. This wrapper will never return a value larger than the values operated on.
+/// Otherwise it behaves like the underlying integer using a simple `alias this`.
 struct NoPromote(T) {
     enum string SIZE = (){
         import std.conv: to;
@@ -73,13 +77,21 @@ struct NoPromote(T) {
 }
 
 
+/// 8 bit signed integer.
 alias i8 = NoPromote!byte;
+/// 8 bit unsigned integer.
 alias u8 = NoPromote!ubyte;
+/// 16 bit signed integer.
 alias i16 = NoPromote!short;
+/// 16 bit unsigned integer.
 alias u16 = NoPromote!ushort;
+/// 32 bit signed integer.
 alias i32 = NoPromote!int;
+/// 32 bit unsigned integer.
 alias u32 = NoPromote!uint;
+/// 64 bit signed integer.
 alias i64 = NoPromote!long;
+/// 64 bit unsigned integer.
 alias u64 = NoPromote!ulong;
 
 
