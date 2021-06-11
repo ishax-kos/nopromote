@@ -19,7 +19,7 @@ struct NoPromote(T) {
     alias base this;
     
 
-    this(R)(R value) {
+    this(TT)(TT value) {
         base = cast(typeof(base)) value;
     }
     
