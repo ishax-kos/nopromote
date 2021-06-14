@@ -9,7 +9,7 @@ private
 pragma(LDC_inline_ir)
     R inlineIR(string s, R, P...)(P);
 
-
+export:
 /// Encapsulate a basic type. This wrapper will never return a value larger than the values operated on.
 /// Otherwise it behaves like the underlying integer using a simple `alias this`.
 struct NoPromote(T) {
