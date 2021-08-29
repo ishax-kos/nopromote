@@ -33,25 +33,25 @@ struct NoPromote(T) /* if (isIntegral!T) */ {
     }
 
 
-    auto opBinary(string op, TT)(const NoPromote!TT rhs) {
+    NoPromote opBinary(string op, TT)(const NoPromote!TT rhs) {
         /// Non commutative operations one might consider prioritizing the left hand side. 
         /// I decided that this should absolutely be the case for shifts.
         /// The jury is still out on / and %.
         static if (op == "<<" || op == ">>" || op == ">>>") {
-            return opLLVM!(op)(this, cast(typeof(this)) rhs);
+            return NoPromote(opLLVM!(op)(this, cast(typeof(this)) rhs));
         }
 
         /// The next two ensure that the largest type that the operands already share is used.
         /// It prefers the signed/unsignedness of the left hand side.
         else static if(typeof(this).sizeof >= typeof(rhs).sizeof) {
-            return opLLVM!(op)(this, cast(typeof(this)) rhs);
+            return NoPromote(opLLVM!(op)(this, cast(typeof(this)) rhs));
         }
         else static if(typeof(this).sizeof < typeof(rhs).sizeof) {
-            return opLLVM!(op)(cast(typeof(rhs)) this, rhs);
+            return NoPromote(opLLVM!(op)(cast(typeof(rhs)) this, rhs));
         }
         
         else
-        return opLLVM!(op)(this, rhs);
+        return NoPromote(opLLVM!(op)(this, rhs));
     }
 
 
