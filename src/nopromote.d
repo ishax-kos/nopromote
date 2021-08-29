@@ -117,7 +117,7 @@ unittest {
 
 private
 auto opLLVM(string op, T)(NoPromote!T lhs, NoPromote!T rhs) {
-            enum string OPERATION = (){
+    enum string OPERATION = (){
         static if (isIntegral!T) switch (op) {
             case "+": return "add";
             case "-": return "sub";
@@ -149,11 +149,11 @@ auto opLLVM(string op, T)(NoPromote!T lhs, NoPromote!T rhs) {
     }();
     import std.conv: to;
     enum string TYPE = (){
-    static if (isIntegral!T)
+        static if (isIntegral!T)
             return "i"~(T.sizeof*8).to!string;
-    else
+        else
             return T.stringof;
-        }();
+    }();
 
     return inlineIR!(`
         %r = `~OPERATION~` `~TYPE~` %0, %1
