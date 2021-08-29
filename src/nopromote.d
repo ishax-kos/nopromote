@@ -148,12 +148,10 @@ auto opLLVM(string op, T)(NoPromote!T lhs, NoPromote!T rhs) {
         }
     }();
     import std.conv: to;
+    enum string TYPE = (){
     static if (isIntegral!T)
-        enum string TYPE = (){
             return "i"~(T.sizeof*8).to!string;
-        }();
     else
-        enum string TYPE = (){
             return T.stringof;
         }();
 
