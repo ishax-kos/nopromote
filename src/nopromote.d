@@ -12,7 +12,7 @@ pragma(LDC_inline_ir)
 export:
 /// Encapsulate a basic type. This wrapper will never return a value larger than the values operated on.
 /// Otherwise it behaves like the underlying integer using a simple `alias this`.
-struct NoPromote(T) if (isIntegral!T) {
+struct NoPromote(T) /* if (isIntegral!T) */ {
     enum string SIZE = (){
         import std.conv: to;
         return (T.sizeof*8).to!string;
