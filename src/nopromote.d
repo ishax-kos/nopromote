@@ -93,6 +93,11 @@ alias u32 = NoPromote!uint;
 alias i64 = NoPromote!long;
 /// 64 bit unsigned integer.
 alias u64 = NoPromote!ulong;
+/// signed integer large enough to hold a pointer.
+alias isize = NoPromote!sizediff_t;
+/// unsigned integer large enough to hold a pointer.
+alias usize = NoPromote!size_t;
+
 
 
 unittest {
