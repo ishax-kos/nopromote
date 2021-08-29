@@ -98,13 +98,20 @@ alias isize = NoPromote!sizediff_t;
 /// unsigned integer large enough to hold a pointer.
 alias usize = NoPromote!size_t;
 
+// alias f32 = float;
+// alias f64 = double;
 
 
 unittest {
     i8 a = 115;
-    int i = 10;
-    writeln("byte ", typeof(a + 5).stringof);
-    writeln("int ",  typeof(a + i).stringof);
+    u32 i = 10;
+    float fA = 1.0;
+    float fB = 2.0;
+    // f32 fC = 3.0;
+    // f32 fD = 4.0;
+
+    writeln(typeof(fA * fB).stringof);
+    writeln(typeof(fC * fD).stringof);
 }
 
 
